@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local AI-agent tooling (auto-installed by `prisma init`), not app code
+/.agents/
+/.claude/
+/.windsurf/
+skills-lock.json
+
+/src/generated/prisma
+
+# database (DATABASE_URL="file:./dev.db" resolves relative to the process cwd,
+# i.e. the project root when running npm scripts from there — not prisma/)
+/dev.db
+/dev.db-journal
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# uploaded media
+/public/uploads/*
+!/public/uploads/.gitkeep

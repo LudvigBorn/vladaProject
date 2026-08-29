@@ -54,6 +54,33 @@ export function TextArea({
   );
 }
 
+export function RangeInput({
+  label,
+  value,
+  onChange,
+  min = 0,
+  max = 100,
+}: {
+  label: string;
+  value: number;
+  onChange: (value: number) => void;
+  min?: number;
+  max?: number;
+}) {
+  return (
+    <Field label={`${label} (${value}%)`}>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="w-full accent-accent-600"
+      />
+    </Field>
+  );
+}
+
 export function SectionCard({
   id,
   title,
@@ -85,9 +112,15 @@ export function ImageUploadField({
 }) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragCounter = useRef(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function handleFile(file: File) {
+    if (!file.type.startsWith("image/")) {
+      setError("Разрешены только изображения (jpg, png, webp, gif)");
+      return;
+    }
     setUploading(true);
     setError(null);
     try {
@@ -108,11 +141,36 @@ export function ImageUploadField({
   return (
     <Field label={label}>
       <div className="flex items-center gap-4">
-        <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-lg border border-navy-100 bg-navy-50">
+        <div
+          onClick={() => inputRef.current?.click()}
+          onDragEnter={(e) => {
+            e.preventDefault();
+            dragCounter.current += 1;
+            setIsDragging(true);
+          }}
+          onDragLeave={(e) => {
+            e.preventDefault();
+            dragCounter.current -= 1;
+            if (dragCounter.current <= 0) setIsDragging(false);
+          }}
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={(e) => {
+            e.preventDefault();
+            dragCounter.current = 0;
+            setIsDragging(false);
+            const file = e.dataTransfer.files?.[0];
+            if (file) handleFile(file);
+          }}
+          className={`relative h-20 w-28 shrink-0 cursor-pointer overflow-hidden rounded-lg border bg-navy-50 transition-colors ${
+            isDragging ? "border-2 border-dashed border-accent-600 bg-accent-600/10" : "border-navy-100"
+          }`}
+        >
           {value ? (
             <Image src={value} alt="" fill className="object-cover" />
           ) : (
-            <div className="flex h-full items-center justify-center text-xs text-navy-600">Нет фото</div>
+            <div className="flex h-full items-center justify-center px-1 text-center text-xs text-navy-600">
+              {isDragging ? "Отпустите" : "Нет фото"}
+            </div>
           )}
         </div>
         <div className="flex flex-col gap-2">
@@ -135,6 +193,7 @@ export function ImageUploadField({
           >
             {uploading ? "Загрузка…" : "Загрузить фото"}
           </button>
+          <p className="text-xs text-navy-500">или перетащите файл на превью</p>
           {value ? (
             <button
               type="button"

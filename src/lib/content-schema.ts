@@ -69,6 +69,8 @@ export const siteContentSchema = z.object({
     description: z.string().max(500),
     whatsappLabel: z.string().max(60),
     emailLabel: z.string().max(60),
+    backgroundImage: z.string().max(500).nullable(),
+    backgroundOpacity: z.number().min(0).max(100),
   }),
   footer: z.object({
     copyright: z.string().max(200),

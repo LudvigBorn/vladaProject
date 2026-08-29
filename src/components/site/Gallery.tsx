@@ -5,18 +5,25 @@ import { SmartImage } from "./SmartImage";
 export function Gallery({ content }: { content: SiteContent }) {
   return (
     <section id="projects" className="scroll-mt-24 bg-white ">
-      <Container className="pb-12 sm:pb-16">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <Container className="mt-7">
+        <div className="grid gap-7 sm:grid-cols-2 ">
           {content.gallery.map((item, i) => (
-            <div key={i}>
+            <div key={i} className="relative aspect-square overflow-hidden">
               <SmartImage
                 src={item.image}
                 alt={item.tag}
-                className="aspect-[3/4] w-full"
-                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                className="h-full w-full"
+                sizes="(min-width: 640px) 50vw, 100vw"
               />
-              <p className="mt-3 text-sm font-bold text-navy-950">{item.tag}</p>
-              <p className="mt-1 text-sm leading-relaxed text-navy-600">{item.description}</p>
+              <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/90 via-navy-950/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <p className="text-lg text-white font-bold uppercase">
+                  {item.tag}
+                </p>
+                <p className="mt-2 text-lg leading-snug text-white/70">
+                  {item.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

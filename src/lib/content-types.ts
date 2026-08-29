@@ -67,6 +67,8 @@ export type SiteContent = {
     description: string;
     whatsappLabel: string;
     emailLabel: string;
+    backgroundImage: string | null;
+    backgroundOpacity: number;
   };
   footer: {
     copyright: string;

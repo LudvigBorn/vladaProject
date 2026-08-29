@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { SiteContent, StatItem, GalleryItem, DirectionItem } from "@/lib/content-types";
-import { Field, TextInput, TextArea, SectionCard, ImageUploadField } from "./fields";
+import { Field, TextInput, TextArea, SectionCard, ImageUploadField, RangeInput } from "./fields";
 import { AdminNavSidebar, AdminNavMobile } from "./AdminNav";
 
 function ArrayControls({
@@ -366,6 +366,16 @@ export function AdminEditor({ initialContent }: { initialContent: SiteContent })
               <TextInput value={content.ctaSection.emailLabel} onChange={(v) => updateSection("ctaSection", { emailLabel: v })} />
             </Field>
           </div>
+          <ImageUploadField
+            label="Фоновая картинка"
+            value={content.ctaSection.backgroundImage}
+            onChange={(v) => updateSection("ctaSection", { backgroundImage: v })}
+          />
+          <RangeInput
+            label="Непрозрачность фоновой картинки"
+            value={content.ctaSection.backgroundOpacity}
+            onChange={(v) => updateSection("ctaSection", { backgroundOpacity: v })}
+          />
         </SectionCard>
 
         <SectionCard id="footer" title="Подвал сайта">

@@ -4,16 +4,30 @@ import { SmartImage } from "./SmartImage";
 
 export function Directions({ content }: { content: SiteContent }) {
   return (
-    <section id="directions" className="scroll-mt-24 bg-navy-50">
-      <Container className="py-12 sm:py-16">
-        <h2 className="text-3xl font-extrabold tracking-tight text-navy-950 sm:text-4xl">Направления</h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <section id="directions" className="scroll-mt-24 ">
+      <Container className="mt-8 sm:mt-10 md:mt-12 lg:mt-14.5">
+        <h2 className="text-4xl font-bold tracking-tight text-navy-950 uppercase sm:text-5xl lg:text-[64px]">
+          Направления
+        </h2>
+        <div className="mt-[22px] grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {content.directions.map((direction, i) => (
-            <div key={i} className="overflow-hidden border border-navy-100 bg-white">
-              <SmartImage src={direction.image} alt={direction.title} className="aspect-[16/9] w-full" placeholder="flat" />
-              <div className="p-5">
-                <h3 className="text-base font-bold text-navy-900">{direction.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy-600">{direction.description}</p>
+            <div
+              key={i}
+              className=" min-h-[372px] pb-4  border border-navy-950   "
+            >
+              <SmartImage
+                src={direction.image}
+                alt={direction.title}
+                className="aspect-[16/9] w-full"
+                placeholder="flat"
+              />
+              <div className="mt-4 px-6">
+                <h3 className="text-lg font-bold text-navy-900 leading-none">
+                  {direction.title}
+                </h3>
+                <p className="mt-2 text-sm leading-none ">
+                  {direction.description}
+                </p>
               </div>
             </div>
           ))}

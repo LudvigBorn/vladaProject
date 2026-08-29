@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { SiteContent } from "@/lib/content-types";
 import { Container } from "./Container";
 import { Button } from "./Button";
@@ -9,28 +10,37 @@ export function CtaSection({ content }: { content: SiteContent }) {
   const mailHref = `mailto:${company.email}`;
 
   return (
-    <section id="contact" className="scroll-mt-24 bg-navy-900">
-      <Container className="py-12 sm:py-16">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{ctaSection.title}</h2>
-            <p className="mt-4 text-base leading-relaxed text-white/80">{ctaSection.description}</p>
+    <section
+      id="contact"
+      className=" mt-8 relative scroll-mt-24 overflow-hidden bg-navy-900 sm:mt-10 lg:mt-14.5 md:mt-12"
+    >
+      {ctaSection.backgroundImage ? (
+        <Image
+          src={ctaSection.backgroundImage}
+          alt=""
+          fill
+          className="object-cover"
+          style={{ opacity: ctaSection.backgroundOpacity / 100 }}
+        />
+      ) : null}
+      <Container className="relative  p-8 pt-12">
+        <div className="flex flex-col  lg:flex-row lg:items-center lg:justify-between">
+          <div className="">
+            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+              {ctaSection.title}
+            </h2>
+            <p className="mt-1 max-w-md text-[20px] leading-none text-white/80">
+              {ctaSection.description}
+            </p>
           </div>
           <div className="flex shrink-0 flex-col gap-3">
             <Button
               href={whatsappHref}
               external
               icon={<WhatsappIcon className="h-4 w-4" />}
-              className="bg-white px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-navy-50"
+              className="w-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white hover:bg-accent-700 lg:w-70 mt-6 lg:mt-0 "
             >
               {ctaSection.whatsappLabel}
-            </Button>
-            <Button
-              href={mailHref}
-              icon={<MailIcon className="h-4 w-4" />}
-              className="bg-accent-600 px-6 py-3 text-sm font-semibold text-white hover:bg-accent-700"
-            >
-              {ctaSection.emailLabel}
             </Button>
           </div>
         </div>

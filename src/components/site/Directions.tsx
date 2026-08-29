@@ -13,7 +13,7 @@ export function Directions({ content }: { content: SiteContent }) {
           {content.directions.map((direction, i) => (
             <div
               key={i}
-              className=" min-h-[372px] pb-4  border border-navy-950   "
+              className="min-h-93 border border-navy-950 bg-white pb-4 transition-transform duration-200 ease-out will-change-transform hover:-translate-y-1 hover:shadow-lg hover:shadow-navy-950/15"
             >
               <SmartImage
                 src={direction.image}

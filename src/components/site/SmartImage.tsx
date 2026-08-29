@@ -5,12 +5,14 @@ export function SmartImage({
   src,
   alt,
   className,
+  imgClassName,
   sizes,
   placeholder = "blueprint",
 }: {
   src: string | null;
   alt: string;
   className?: string;
+  imgClassName?: string;
   sizes?: string;
   placeholder?: "blueprint" | "flat";
 }) {
@@ -32,7 +34,7 @@ export function SmartImage({
         alt={alt}
         fill
         sizes={sizes ?? "100vw"}
-        className="object-cover"
+        className={`object-cover ${imgClassName ?? ""}`}
       />
     </div>
   );

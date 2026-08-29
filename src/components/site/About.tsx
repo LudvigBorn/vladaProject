@@ -15,10 +15,11 @@ export function About({ content }: { content: SiteContent }) {
           <SmartImage
             src={about.image}
             alt={about.title}
-            className="[grid-area:photo] w-full aspect-16/9 lg:aspect-5/4 lg:h-full"
+            className="group [grid-area:photo] w-full aspect-16/9 lg:aspect-5/4 lg:h-full"
+            imgClassName="transition-[filter] duration-300 ease-out group-hover:brightness-110"
             // sizes="(min-width: 1024px) 50vw, 100vw"
           />
-          <div className="[grid-area:text] text-base sm:text-lg lg:text-[18px] leading-[1.2]">
+          <div className="[grid-area:text] text-base sm:text-lg lg:text-[18px] leading-[1.2] max-w-9/10">
             {about.paragraphs.map((p, i) => (
               <p className={`${i > 0 ? "mt-5 hidden lg:block" : ""}`} key={i}>
                 {p}

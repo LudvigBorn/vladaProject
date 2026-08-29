@@ -19,7 +19,7 @@ export function Hero({ content }: { content: SiteContent }) {
             <h1 className="mt-1 leading-none text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl lg:text-[64px]">
               {hero.title}
             </h1>
-            <p className=" leading-none  mt-[22px] max-w-xl text-base  text-black">
+            <p className=" leading-snug  mt-[22px] max-w-xl text-base  text-black">
               {hero.description}
             </p>
           </div>

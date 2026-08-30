@@ -1,13 +1,13 @@
 import Image from "next/image";
 import type { SiteContent } from "@/lib/content-types";
+import { getWhatsappHref } from "@/lib/links";
 import { Container } from "./Container";
 import { Button } from "./Button";
-import { WhatsappIcon, MailIcon } from "./Icons";
+import { WhatsappIcon } from "./Icons";
 
 export function CtaSection({ content }: { content: SiteContent }) {
   const { ctaSection, company } = content;
-  const whatsappHref = `https://wa.me/${company.whatsappNumber.replace(/[^\d]/g, "")}`;
-  const mailHref = `mailto:${company.email}`;
+  const whatsappHref = getWhatsappHref(company);
 
   return (
     <section

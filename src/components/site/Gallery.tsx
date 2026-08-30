@@ -23,7 +23,7 @@ export function Gallery({ content }: { content: SiteContent }) {
                 <p className="text-lg text-white font-bold uppercase">
                   {item.tag}
                 </p>
-                <p className="mt-2 text-base leading-snug text-white/70">
+                <p className="mt-2 text-base leading-snug text-white/85">
                   {item.description}
                 </p>
               </div>

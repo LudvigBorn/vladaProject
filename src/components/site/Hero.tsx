@@ -1,4 +1,5 @@
 import type { SiteContent } from "@/lib/content-types";
+import { getWhatsappHref } from "@/lib/links";
 import { Container } from "./Container";
 import { Button } from "./Button";
 import { SmartImage } from "./SmartImage";
@@ -6,7 +7,7 @@ import { ArrowRightIcon } from "./Icons";
 
 export function Hero({ content }: { content: SiteContent }) {
   const { hero, featuredProject, company } = content;
-  const whatsappHref = `https://wa.me/${company.whatsappNumber.replace(/[^\d]/g, "")}`;
+  const whatsappHref = getWhatsappHref(company);
 
   return (
     <section className="flex h-screen flex-col bg-white">

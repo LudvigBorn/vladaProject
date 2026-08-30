@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { SiteContent } from "@/lib/content-types";
+import { getWhatsappHref } from "@/lib/links";
 import { Container } from "./Container";
 import { Button } from "./Button";
 import { PhoneIcon, MenuIcon, CloseIcon } from "./Icons";
@@ -12,7 +13,7 @@ export function Header({ content }: { content: SiteContent }) {
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
-  const whatsappHref = `https://wa.me/${content.company.whatsappNumber.replace(/[^\d]/g, "")}`;
+  const whatsappHref = getWhatsappHref(content.company);
 
   useEffect(() => {
     function onScroll() {

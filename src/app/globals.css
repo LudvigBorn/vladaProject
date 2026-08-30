@@ -9,11 +9,16 @@
      variants are derived only via alpha or color-mix with black/white. */
   --color-navy-950: #0f2854; /* darkest brand blue */
   --color-navy-900: #0f2854;
+  --color-navy-700: #194681;
   --color-navy-800: #1c4d8d; /* medium-dark brand blue */
-  --color-navy-700: #1c4d8d;
+  /* --color-navy-700: #1c4d8d; */
   --color-navy-600: #4988c4; /* medium brand blue */
-  --color-navy-100: rgb(189 232 245 / 60%); /* lightest brand blue, tinted for hairlines */
-  --color-navy-50: rgb(189 232 245 / 22%); /* lightest brand blue, faint section tint */
+  --color-navy-100: rgb(
+    189 232 245 / 60%
+  ); /* lightest brand blue, tinted for hairlines */
+  --color-navy-50: rgb(
+    189 232 245 / 22%
+  ); /* lightest brand blue, faint section tint */
 
   --color-accent-600: #668914; /* brand green */
   --color-accent-700: color-mix(in srgb, #668914 82%, black 18%);
@@ -54,7 +59,8 @@ body {
 
 .blueprint-pattern {
   background-color: var(--color-navy-800);
-  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 28px 28px;
 }

@@ -49,5 +49,11 @@ skills-lock.json
 
 /src/generated/prisma
 
+/dev.db
 /dev.db-journal
+/prisma/dev.db
 /prisma/dev.db-journal
+
+# user-uploaded images — live on the server, no need to ship through git
+/public/uploads/*
+!/public/uploads/.gitkeep

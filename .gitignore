@@ -49,10 +49,16 @@ skills-lock.json
 
 /src/generated/prisma
 
+# database (DATABASE_URL resolves relative to the process cwd,
+# i.e. the project root when running npm scripts from there — not prisma/)
 /dev.db
 /dev.db-journal
 /prisma/dev.db
 /prisma/dev.db-journal
+/prod.db
+/prod.db-journal
+/prisma/prod.db
+/prisma/prod.db-journal
 
 # user-uploaded images — live on the server, no need to ship through git
 /public/uploads/*

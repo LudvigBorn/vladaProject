@@ -51,11 +51,17 @@ skills-lock.json
 
 # database (DATABASE_URL resolves relative to the process cwd,
 # i.e. the project root when running npm scripts from there — not prisma/)
-# dev.db itself is tracked (CMS content is synced through git), only the
-# transient SQLite journal files are ignored.
+# CMS content lives only in the live database, edited via /admin on the
+# actual site — never synced through git, to avoid clobbering live edits.
+/dev.db
 /dev.db-journal
+/prisma/dev.db
 /prisma/dev.db-journal
 /prod.db
 /prod.db-journal
 /prisma/prod.db
 /prisma/prod.db-journal
+
+# user-uploaded images — live on the server, no need to ship through git
+/public/uploads/*
+!/public/uploads/.gitkeep
